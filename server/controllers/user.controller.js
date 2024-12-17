@@ -22,6 +22,8 @@ const Signup = async (req, res) => {
       };
 
       let token = jwt.sign(data, "Private-Key");
+      console.log(token);
+      
       let otp = Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit OTP
       otps.set(email, otp);
 

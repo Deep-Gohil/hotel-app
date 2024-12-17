@@ -3,7 +3,7 @@ const connectToDatabase = require('./config/db');
 
 require("dotenv").config()
 const cors = require('cors');
-const path = require("path");
+
 const userRouter = require('./routes/user.router');
 const hotelRouter = require('./routes/superAdmin/hotel-router');
 const foodRouter = require('./routes/food.router');

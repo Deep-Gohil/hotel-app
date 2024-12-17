@@ -1,15 +1,17 @@
 const Food = require("../models/food")
 
-const createFood =async(req,res) =>{
+const createFood = async (req, res) => {
     try {
-        let {id} = req.params;
-        req.body.restaurantId = id;
-        const newFood = await Food.create(req.body)
-        res.status(200).json("Food Added Successfully")
+        const restaurantId = req.user.restaurantId; 
+        req.body.restaurantId = restaurantId;
+
+        const newFood = await Food.create(req.body);
+        res.status(200).json({ message: "Food Added Successfully"});
     } catch (error) {
-        res.status(400).json("Failed to Add Food",error)
+        console.error(error);
+        res.status(400).json({ message: "Failed to Add Food", error: error.message });
     }
-}
+};
 
 const getFoods = async(req,res) => {
     try {
